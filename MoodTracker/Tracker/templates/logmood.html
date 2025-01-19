@@ -1,0 +1,50 @@
+<!-- Start Generation Here -->
+{% extends 'sidebar.html' %}
+
+{% block content %}
+<div class="main-content" style="margin-left: 270px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100vh;"> <!-- Adjusted for sidebar width and centered content -->
+    <h1 class="mt-4">Log Your Mood</h1> <!-- Added margin-top for spacing -->
+    <div class="d-flex justify-content-center align-items-start" style="width: 100%; margin-top: 20px;"> <!-- Adjusted for top alignment -->
+        <form method="POST" action="{% url 'log_mood' %}" style="width: 100%; max-width: 400px;"> <!-- Set max-width for form -->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="mood">Select your mood:</label>
+                <div id="mood" name="mood" class="emoji-selector">
+                    <span class="emoji" data-value="happy" style="cursor: pointer;">
+                        <i class="fas fa-smile" style="font-size: 50px; color: gray;"></i>
+                    </span>
+                    <span class="emoji" data-value="sad" style="cursor: pointer;">
+                        <i class="fas fa-frown" style="font-size: 50px; color: gray;"></i>
+                    </span>
+                    <span class="emoji" data-value="neutral" style="cursor: pointer;">
+                        <i class="fas fa-meh" style="font-size: 50px; color: gray;"></i>
+                    </span>
+                    <span class="emoji" data-value="angry" style="cursor: pointer;">
+                        <i class="fas fa-angry" style="font-size: 50px; color: gray;"></i>
+                    </span>
+                    <span class="emoji" data-value="anxious" style="cursor: pointer;">
+                        <i class="fas fa-exclamation-circle" style="font-size: 50px; color: gray;"></i>
+                    </span>
+                </div>
+                <input type="hidden" id="selected-mood" name="mood" value="">
+            </div>
+            <script>
+                const emojis = document.querySelectorAll('.emoji');
+                emojis.forEach(emoji => {
+                    emoji.addEventListener('click', function() {
+                        emojis.forEach(e => e.querySelector('i').style.color = 'gray'); // Reset all to gray
+                        this.querySelector('i').style.color = 'yellow'; // Change selected emoji to black
+                        document.getElementById('selected-mood').value = this.getAttribute('data-value'); // Set hidden input value
+                    });
+                });
+            </script>
+            <div class="form-group">
+                <label for="notes">Additional Notes:</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Log Mood</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+<!-- End Generation Here -->

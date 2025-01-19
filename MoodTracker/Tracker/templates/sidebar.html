@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mood Track{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            background-color: #121212; /* Dark background for the body */
+            color: #ffffff; /* Light text color for the body */
+            height: 100vh; /* Ensure body takes full height */
+            margin: 0; /* Remove default margin */
+        }
+        .sidebar {
+            background-color: #1e1e1e; /* Darker background for the sidebar */
+            height: 100vh; /* Full height for the sidebar to match the viewport */
+        }
+        .sidebar a {
+            width: 100%; /* Ensure links cover the full width of the list item */
+            color: #ffffff; /* Light text color for links */
+        }
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* White low opacity background on hover */
+            color: cyan; /* Change text color to cyan on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="sidebar p-3" style="width: 250px;"> <!-- Increased width to 250px -->
+            <h2 class="text-light">MoodTracker</h2> <!-- Sidebar title added -->
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#statistics" role="button" aria-expanded="false" aria-controls="statistics"><i class="fas fa-chart-line"></i> Statistics</a>
+                    <div class="collapse" id="statistics">
+                        <ul class="nav flex-column pl-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'graph' %}"><i class="fas fa-chart-bar"></i> Graph</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'calendar' %}"><i class="fas fa-calendar-alt"></i> Calendar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log_mood' %}"><i class="fas fa-pencil-alt"></i> Log Mood</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-content p-3" style="margin-left: 270px;"> <!-- Adjusted margin-left to match new sidebar width -->
+            {% block content %}
+            <h1>Welcome to the Mood Tracker</h1>
+            <p>Select an option from the sidebar to get started.</p>
+            {% endblock %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

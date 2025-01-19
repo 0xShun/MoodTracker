@@ -1,0 +1,51 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif; /* Use Arial font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove the import for Dancing Script font */
+.sidebar {
+    position: fixed; /* Fix the sidebar */
+    width: 200px; /* Set a width for the sidebar */
+    height: 100%; /* Full height */
+    background-color: #222222; /* Dark background for the sidebar */
+    color: #aaaaaa; /* Lighter shade for the sidebar text */
+    display: flex; /* Use flexbox for the sidebar */
+    flex-direction: column; /* Stack items vertically */
+    align-items: start; /* Stretch items to fill the sidebar */
+    list-style-type: none; /* Remove list decoration */
+    padding: 0; /* Remove padding */
+}
+
+.sidebar a {
+    color: #aaaaaa; /* Lighter shade for the sidebar link text */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px; /* Padding for links */
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center icon and text vertically */
+    gap: 10px; /* Add space between the icon and text */
+}
+
+.sidebar a:hover {
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.2
+    ); /* White low opacity background on hover */
+    color: cyan; /* Change text color to cyan on hover */
+    width: 100%; /* Extend the hover effect to the full width of the sidebar */
+}
+
+.main-content {
+    margin-left: 220px; /* Space for the fixed sidebar */
+    padding: 10px; /* Padding for the main content */
+}
+
+h1,
+p {
+    margin: 10px;
+}
